@@ -4,8 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name 
       t.string :email
-      t.integer :age
-      t.integer :eatery_id 
+      t.integer :age 
     end
   end
 end

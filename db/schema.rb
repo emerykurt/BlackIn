@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20200625123221) do
     t.string  "last_name"
     t.string  "email"
     t.integer "age"
-    t.integer "eatery_id"
   end
 
 end

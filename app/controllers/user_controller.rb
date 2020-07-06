@@ -8,14 +8,6 @@ class UserController < ApplicationController
   
     end
 
-    get '/registrations/signup' do
-      erb :'registrations/signup'
-    end
-
-    get '/sessions/login' do
-      erb :'sessions/login'
-    end
-
     #new user form
     get '/user/new' do
       erb :'user/new'
@@ -35,8 +27,13 @@ class UserController < ApplicationController
   
     #create 1 user
     post '/user' do
+      user = User.create(params[:user])
       if user.save
+        session[:user_id] = user.id
         redirect to '/user/:id'
+      else
+        @error = user.errors.full_messages.join(" - ")
+        erb :'user/new'
       end
     end
   
@@ -52,7 +49,23 @@ class UserController < ApplicationController
   
     end
 
-    post '/registrations' do
-      binding.pry
+    #should be in a sessions controller
+    get '/logout' do
+      session.clear
+      redirect to '/login'
+    end
+
+    get '/login' do
+      erb :'user/login'
+    end
+
+    post '/login' do
+      user = User.find_by_username(params[:user][:username])
+      if user && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        redirect to '/eatery'
+      else
+        redirect '/login'
+      end
     end
   end

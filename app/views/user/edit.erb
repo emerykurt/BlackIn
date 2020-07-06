@@ -5,13 +5,12 @@
     <input type="hidden" name="_method" value="PATCH">
 
 <label>First Name:</label>
-<input type="text" first_name="name" value="<%= @user.first_name %>"/><br>
+<input type="text" name="user[first_name]" value="<%= @user.first_name %>"/><br/>
 <label>Last Name:</label>
-<input type="text" last_name="name" value="<%= @user.last_name %>"/><br>
+<input type="text" name="user[last_name]" value="<%= @user.last_name %>"/><br/>
 <label>Email:</label>
-<input type="text" email="name" value="<%= @user.email %>"/><br>
-<label>Age:</label>
-<input type="integer" age="name" value="<%= @user.age %>"/>
+<input type="email" name="user[email]" value="<%= @user.email %>"/><br/>
+<br/>
 
 <input type="submit" value="submit"/><br>
 <br>

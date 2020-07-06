@@ -1,14 +1,13 @@
-<h1><%= @user.first_name %>'s Profile</h1><br>
+<h1><%= current_user.first_name %>'s Profile</h1><br>
 <br>
-<h2><%= @user.first_name %></h2>
-<h2><%= @user.last_name %></h2>
-<h2><%= @user.email%></h2>
-<h2><%= @user.age %></h2>
+<h2>First Name: <%= current_user.first_name %></h2>
+<h2>Last Name: <%= current_user.last_name %></h2>
+<h2>Email: <%= current_user.email%></h2>
 <br>
 <br>
-<a href="/user/<%= @user.id %>/edit"> Rate this Eatery </a> 
+<a href="/user/<%= current_user.id %>/edit"> Edit Profile </a> 
 
-<form action= "/user/<%= @user.id %>" method="POST">
+<form action= "/user/<%= current_user.id %>" method="POST">
     <input type="hidden" value="DELETE" name="_method" >
     <input type="submit" value="Delete"/>
 </form>

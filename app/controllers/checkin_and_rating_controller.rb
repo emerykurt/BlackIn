@@ -20,7 +20,7 @@ class CheckinAndRatingController < ApplicationController
   
     #edit a checkin_and_rating
     get '/checkin_and_rating/:id/edit' do
-  
+    
     end
   
     #create 1 checkin_and_rating

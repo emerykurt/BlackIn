@@ -2,11 +2,6 @@
 class UserController < ApplicationController
 
     # 7 RESTFUL routes for user:
-  
-    #shows all the users
-    get '/user' do
-  
-    end
 
     #new user form
     get '/user/new' do
@@ -42,11 +37,6 @@ class UserController < ApplicationController
       user = User.find(params[:id])
       user.update(params[:user])
       redirect to "/user/#{user.id}"
-    end
-  
-    #delete 1 user
-    delete '/user/:id' do
-  
     end
 
     #should be in a sessions controller

@@ -20,16 +20,6 @@ class EateryController < ApplicationController
     erb :'eatery/show'
   end
 
-  #edit a eatery
-  get '/eatery/:id/edit' do
-
-  end
-
-  #create 1 eatery
-  post '/eatery' do
-
-  end
-
   #update 1 eatery
   patch '/eatery/:id' do
     eatery = Eatery.new(params)
@@ -37,8 +27,4 @@ class EateryController < ApplicationController
     redirect to '/eatery'
   end
 
-  #delete 1 eatery
-  delete '/eatery/:id' do
-
-  end
 end

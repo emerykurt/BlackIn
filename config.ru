@@ -6,7 +6,7 @@ end
 
 use Rack::MethodOverride
 use EateryController
-use CheckinAndRatingController
+use RatingController
 use UserController
 
 run ApplicationController

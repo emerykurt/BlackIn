@@ -1,13 +1,16 @@
+<a href="/user/<%= current_user.id %>"> <input type="submit" value="Profile"></a> <a href="/eatery"> <input type="submit" value="Eateries"></a> <a href="/logout"> <input type="submit" value="Logout"/> </a>
+<br/>
+<br/>
 <h1>Single Eatery</h1><br>
 <br>
 <h2><%= @eatery.name %></h2>
 <h2><%= @eatery.type_of_food %></h2>
 <h2><%= @eatery.neighborhood %></h2>
 <h2><%= @eatery.address %></h2>
-<h2><%= @eatery.website %></h2> 
+<h2><a href="<%= @eatery.website %>"> <%= @eatery.website %> </a></h2> 
 <h2>@<%= @eatery.instagram %></h2><br>
 <br>
-<a href="/checkin_and_rating/new"> Rate this Eatery </a> 
+<a href="/rating/new"> Rate this Eatery </a> 
 
       <%# t.string :name
       t.string :owner

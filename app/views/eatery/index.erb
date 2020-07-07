@@ -1,5 +1,10 @@
+<a href="/user/<%= current_user.id %>"> <input type="submit" value="Profile"></a><a href="/logout"> <input type="submit" value="Logout"/> </a>
+<br/>
+<br/>
 <h1>All of the Eateries</h1>
+<br/>
+<br/>
 
 <% @eats.each do |eatery| %>
-    <h3> <%= eatery.name %> </h3>
+    <h3><a href="/eatery/<%= eatery.id %>"><%= eatery.name %> </a> </h3>
 <% end %>

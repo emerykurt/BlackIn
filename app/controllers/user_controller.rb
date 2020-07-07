@@ -60,10 +60,10 @@ class UserController < ApplicationController
     end
 
     post '/login' do
-      user = User.find_by_username(params[:user][:username])
+      user = User.find_by_email(params[:user][:email])
       if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        redirect to '/eatery'
+        redirect to '/user/:id'
       else
         redirect '/login'
       end

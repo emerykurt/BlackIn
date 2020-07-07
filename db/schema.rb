@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20200625123221) do
 
-  create_table "checkins_and_ratings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "eatery_id"
-    t.boolean "checkin"
-    t.integer "rating"
-  end
-
   create_table "eateries", force: :cascade do |t|
     t.string "name"
     t.string "owner"
@@ -28,6 +21,15 @@ ActiveRecord::Schema.define(version: 20200625123221) do
     t.string "address"
     t.string "website"
     t.string "instagram"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "eatery_id"
+    t.integer "customer_service"
+    t.integer "product_quality"
+    t.integer "checkout_experience"
+    t.integer "overall_experience"
   end
 
   create_table "users", force: :cascade do |t|

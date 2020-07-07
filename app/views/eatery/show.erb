@@ -10,8 +10,38 @@
 <h2><a href="<%= @eatery.website %>"> <%= @eatery.website %> </a></h2> 
 <h2>@<%= @eatery.instagram %></h2><br>
 <br>
-<a href="/rating/new"> Rate this Eatery </a> 
+<br/>
+<br/>
+<br/>
+<h1>Rating this Eatery</h1>
+<br>
+<br>
 
+<form method="POST" action="/rating">
+<input type="hidden" name="eatery_id" id="eatery_id" value="<%= @eatery.id %>"/>
+<label>Customer Service:</label>
+<input type="radio" name="customer_service" value="0"> bad
+<input type="radio" name="customer_service" value="5"> okay
+<input type="radio" name="customer_service" value="10" checked> good
+<br/>
+<label>Product Quality:</label>
+<input type="radio" name="product_quality" value="0"> bad
+<input type="radio" name="product_quality" value="5"> okay
+<input type="radio" name="product_quality" value="10" checked> good
+<br/>
+<label>Checkout Experience:</label>
+<input type="radio" name="checkout_experience" value="0"> bad
+<input type="radio" name="checkout_experience" value="5"> okay
+<input type="radio" name="checkout_experience" value="10" checked> good
+<br/>
+<label>Overall Experience:</label>
+<input type="radio" name="overall_experience" value="0"> bad
+<input type="radio" name="overall_experience" value="5"> okay
+<input type="radio" name="overall_experience" value="10" checked> good
+<br/>
+<br/>
+<input type="submit" value="submit"/>
+</form>
       <%# t.string :name
       t.string :owner
       t.string :type_of_food

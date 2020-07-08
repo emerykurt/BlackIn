@@ -16,9 +16,10 @@
 <h1>Rating this Eatery</h1>
 <br>
 <br>
-
-<form method="POST" action="/rating">
+<%# action="/rating/:id" %>
+<form method="POST" action="<%= return RedirectToAction("rating/:id", "RatingController") %>"> 
 <input type="hidden" name="eatery_id" id="eatery_id" value="<%= @eatery.id %>"/>
+<input type="hidden" name="eatery_name" id="eatery_name" value="<%= @eatery.name %>"/>
 <label>Customer Service:</label>
 <input type="radio" name="customer_service" value="0"> bad
 <input type="radio" name="customer_service" value="5"> okay

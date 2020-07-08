@@ -3,6 +3,7 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
       t.integer :user_id
       t.integer :eatery_id
+      t.integer :eatery_name
       t.integer :customer_service
       t.integer :product_quality
       t.integer :checkout_experience

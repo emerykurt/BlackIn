@@ -46,7 +46,10 @@ class RatingController < ApplicationController
   
     #delete 1 rating
     delete '/rating/:id' do
-  
+      
+      rating = Rating.find(params[:id])
+      rating.destroy
+      redirect "/eatery"
     end
 
     get '/logout' do

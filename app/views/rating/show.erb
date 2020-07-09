@@ -1,4 +1,4 @@
-<a href="/user/<%= current_user.id %>"> <input type="submit" value="Profile"></a> <a href="/eatery"> <input type="submit" value="Eateries"></a> <a href="/logout"> <input type="submit" value="Logout"/></a>
+<a href="/user/<%= current_user.id %>"><input type="submit" value="Profile"></a> <a href="/eatery"><input type="submit" value="Eateries"></a><a href="/logout"><input type="submit" value="Logout"/></a>
 <br/>
 <br/>
 <h1>Rating Review</h1><br>
@@ -8,4 +8,8 @@
 <h2>Product Quality:      <%= current_rating.product_quality %></h2>
 <h2>Checkout Experience:  <%= current_rating.checkout_experience %></h2>
 <h2>Overall Experience:   <%= current_rating.overall_experience %></h2><br>
-<a href="/rating/<%= current_rating.id %>/edit"> <input type="submit" value="Edit Rating"/></a>
+<a href="/rating/<%= current_rating.id %>/edit"> <input type="submit" value="Edit Rating"/></a><br/>
+<form action= "/rating/<%= current_rating.id %>" method="POST">
+    <input type="hidden" value="DELETE" name="_method" >
+    <input type="submit" value="Delete Rating"/>
+</form>

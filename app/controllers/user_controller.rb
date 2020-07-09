@@ -42,6 +42,13 @@ class UserController < ApplicationController
       redirect to "/user/#{user.id}"
     end
 
+    delete '/user/:id' do
+      
+      user = User.find(session[:user_id])
+      user.destroy
+      redirect "/"
+    end
+
     #should be in a sessions controller
     get '/logout' do
       session.clear

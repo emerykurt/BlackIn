@@ -1,0 +1,32 @@
+<h1>Edit Rating</h1>
+<br>
+<br>
+<form method="POST" action="/rating/<%= params[:id] %>">
+    <input type="hidden" name="_method" value="PATCH">
+
+<input type="hidden" name="rating[eatery_id]" id="rating[eatery_id]" value="<%= current_rating.eatery_id %>"/>
+<input type="hidden" name="rating[eatery_name]" id="rating[eatery_name]" value="<%= current_rating.eatery_name %>"/>
+<input type="hidden" name="rating[user_id]" id="rating[user_id]" value="<%= current_rating.user_id %>"/>
+<label>Customer Service:</label>
+<input type="radio" name="rating[customer_service]" value="0"> bad
+<input type="radio" name="rating[customer_service]" value="5"> okay
+<input type="radio" name="rating[customer_service]" value="10" checked> good
+<br/>
+<label>Product Quality:</label>
+<input type="radio" name="rating[product_quality]" value="0"> bad
+<input type="radio" name="rating[product_quality]" value="5"> okay
+<input type="radio" name="rating[product_quality]" value="10" checked> good
+<br/>
+<label>Checkout Experience:</label>
+<input type="radio" name="rating[checkout_experience]" value="0"> bad
+<input type="radio" name="rating[checkout_experience]" value="5"> okay
+<input type="radio" name="rating[checkout_experience]" value="10" checked> good
+<br/>
+<label>Overall Experience:</label>
+<input type="radio" name="rating[overall_experience]" value="0"> bad
+<input type="radio" name="rating[overall_experience]" value="5"> okay
+<input type="radio" name="rating[overall_experience]" value="10" checked> good
+<br/>
+<br/>
+<input type="submit" value="submit"/>
+</form>

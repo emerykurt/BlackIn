@@ -10,18 +10,21 @@ class UserController < ApplicationController
   
     #shows 1 user
     get '/user/:id' do
+      
       @user = User.find_by_id(params[:id])
       erb :'user/show'
     end
   
     #edit a user
     get '/user/:id/edit' do
+      
       @user = User.find_by_id(params[:id])
       erb :'user/edit'
     end
   
     #create 1 user
     post '/user' do
+      
       user = User.create(params[:user])
       if user.save
         session[:user_id] = user.id

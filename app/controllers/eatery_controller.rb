@@ -4,7 +4,7 @@ class EateryController < ApplicationController
   # 7 RESTFUL routes for eatery:
 
   #shows all the eateries
-  get '/eatery' do  
+  get '/eatery' do 
     @eats = Eatery.all 
     erb :'eatery/index' 
   end

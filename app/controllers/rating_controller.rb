@@ -15,33 +15,33 @@ class RatingController < ApplicationController
 
     #shows 1 rating
     get '/rating/:id' do
-      "Hello World"
-      # @rating = Rating.find_by_id(params[:id])
-      # erb :'rating/show'
+     
+      @rating = Rating.find_by_id(params[:id])
+      erb :'rating/show'
     end
   
     #edit a rating
     get '/rating/:id/edit' do
-      
+       
+      @rating = Rating.find_by_user_id(params[:id])
+      erb :'rating/edit'
     end
   
     #create 1 rating
     post '/rating' do
-      rating = Rating.create(customer_service: params[:customer_service], product_quality: params[:product_quality], checkout_experience: params[:checkout_experience], overall_experience: params[:overall_experience], eatery_id: params[:eatery_id], eatery_name: params[:eatery_name], user_id: session[:user_id])
-      if rating.save
-        session[:user_id] = user.id
-        redirect to '/rating/:id'
-      else
-        redirect to '/logout'
-      end
+      
+      rating = Rating.create(params[:rating])
+      rating.save
+      redirect to '/rating/:id'
       
     end
   
     #update 1 rating
     patch '/rating/:id' do
-        rating = Rating.update(params)
-        rating.save
-        redirect to '/rating'
+      
+        rating = Rating.find(params[:id])
+        rating.update(params[:rating])
+        redirect to "/rating/#{rating.id}"
     end
   
     #delete 1 rating

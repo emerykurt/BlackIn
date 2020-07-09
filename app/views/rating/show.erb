@@ -1,10 +1,11 @@
-<a href="/user/<%= current_user.id %>"> <input type="submit" value="Profile"></a> <a href="/eatery"> <input type="submit" value="Eateries"></a> <a href="/logout"> <input type="submit" value="Logout"/> </a>
+<a href="/user/<%= current_user.id %>"> <input type="submit" value="Profile"></a> <a href="/eatery"> <input type="submit" value="Eateries"></a> <a href="/logout"> <input type="submit" value="Logout"/></a>
 <br/>
 <br/>
 <h1>Rating Review</h1><br>
 <br>
-<h2><%= @eatery.name %></h2>
-<h2><%= @rating.customer_service %></h2>
-<h2><%= @rating.product_quality %></h2>
-<h2><%= @rating.checkout_experience %></h2>
-<h2>@<%= @rating.overall_experience %></h2><br>
+<h2>Eatery Name:          <%= current_rating.eatery_name %></h2>
+<h2>Customer Service:     <%= current_rating.customer_service %></h2>
+<h2>Product Quality:      <%= current_rating.product_quality %></h2>
+<h2>Checkout Experience:  <%= current_rating.checkout_experience %></h2>
+<h2>Overall Experience:   <%= current_rating.overall_experience %></h2><br>
+<a href="/rating/<%= current_rating.id %>/edit"> <input type="submit" value="Edit Rating"/></a>

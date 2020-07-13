@@ -4,15 +4,7 @@ class RatingController < ApplicationController
     # 7 RESTFUL routes for rating:
   
     #shows all the ratings for user who is logged in.
-    get '/rating' do
   
-    end
-  
-    #new rating form
-    get '/rating/new' do
-      erb :'rating/new'
-    end
-
     #shows 1 rating
     get '/rating/:id' do
      

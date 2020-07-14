@@ -1,4 +1,3 @@
-<a href="/user/<%= current_user.id %>"><input type="submit" value="Profile"></a><a href="/eatery"> <input type="submit" value="Eateries"></a> <a href="/logout"><input type="submit" value="Logout"/> </a>
 <br/>
 <br/>
 <h1>Single Eatery</h1><br>
@@ -13,36 +12,40 @@
 <br/>
 <br/>
 <br/>
-<h1>Rating this Eatery</h1>
-<br>
-<br>
-<form method="POST" action="/rating">
-<input type="hidden" name="rating[eatery_id]" id="rating[eatery_id]" value="<%= @eatery.id %>"/>
-<input type="hidden" name="rating[eatery_name]" id="rating[eatery_name]" value="<%= @eatery.name %>"/>
-<input type="hidden" name="rating[user_id]" id="rating[user_id]" value="<%= session[:user_id] %>"/>
-<label>Customer Service:</label>
-<input type="radio" name="rating[customer_service]" value="0"> bad
-<input type="radio" name="rating[customer_service]" value="5"> okay
-<input type="radio" name="rating[customer_service]" value="10" checked> good
-<br/>
-<label>Product Quality:</label>
-<input type="radio" name="rating[product_quality]" value="0"> bad
-<input type="radio" name="rating[product_quality]" value="5"> okay
-<input type="radio" name="rating[product_quality]" value="10" checked> good
-<br/>
-<label>Checkout Experience:</label>
-<input type="radio" name="rating[checkout_experience]" value="0"> bad
-<input type="radio" name="rating[checkout_experience]" value="5"> okay
-<input type="radio" name="rating[checkout_experience]" value="10" checked> good
-<br/>
-<label>Overall Experience:</label>
-<input type="radio" name="rating[overall_experience]" value="0"> bad
-<input type="radio" name="rating[overall_experience]" value="5"> okay
-<input type="radio" name="rating[overall_experience]" value="10" checked> good
-<br/>
-<br/>
-<input type="submit" value="submit"/>
-</form>
+<%if current_user%>
+      <h1>Rating this Eatery</h1>
+      <br>
+      <br>
+      <form method="POST" action="/rating">
+      <input type="hidden" name="rating[eatery_id]" id="rating[eatery_id]" value="<%= @eatery.id %>"/>
+      <input type="hidden" name="rating[eatery_name]" id="rating[eatery_name]" value="<%= @eatery.name %>"/>
+      <input type="hidden" name="rating[user_id]" id="rating[user_id]" value="<%= session[:user_id] %>"/>
+      <label>Customer Service:</label>
+      <input type="radio" name="rating[customer_service]" value="0"> bad
+      <input type="radio" name="rating[customer_service]" value="5"> okay
+      <input type="radio" name="rating[customer_service]" value="10" checked> good
+      <br/>
+      <label>Product Quality:</label>
+      <input type="radio" name="rating[product_quality]" value="0"> bad
+      <input type="radio" name="rating[product_quality]" value="5"> okay
+      <input type="radio" name="rating[product_quality]" value="10" checked> good
+      <br/>
+      <label>Checkout Experience:</label>
+      <input type="radio" name="rating[checkout_experience]" value="0"> bad
+      <input type="radio" name="rating[checkout_experience]" value="5"> okay
+      <input type="radio" name="rating[checkout_experience]" value="10" checked> good
+      <br/>
+      <label>Overall Experience:</label>
+      <input type="radio" name="rating[overall_experience]" value="0"> bad
+      <input type="radio" name="rating[overall_experience]" value="5"> okay
+      <input type="radio" name="rating[overall_experience]" value="10" checked> good
+      <br/>
+      <br/>
+      <input type="submit" value="submit"/>
+      </form>
+<%else%>
+      <h3><a href="/login">Login</a> or <a href="/user/new">Sign Up</a> to rate this eatery!</h3> 
+<%end%>
       <%# t.string :name
       t.string :owner
       t.string :type_of_food

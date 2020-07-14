@@ -10,11 +10,14 @@ class UserController < ApplicationController
   
     #shows 1 user
     get '/user/:id' do
-     
+     if current_user
       @user = User.find_by_id(params[:id])
       @ratings = Rating.all 
       @eats = Eatery.all 
       erb :'user/show'
+     else
+      erb :'welcome'
+     end
     end
   
     #edit a user

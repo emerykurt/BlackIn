@@ -7,15 +7,24 @@ class RatingController < ApplicationController
   
     #shows 1 rating
     get '/rating/:id' do
-      @rating = Rating.find_by_id(params[:id])
-      erb :'rating/show'
+      
+      if logged_in?
+        @rating = Rating.find_by_id(params[:id])
+        erb :'rating/show'
+      else 
+         redirect to '/login'
+      end 
     end
   
     #edit a rating
     get '/rating/:id/edit' do
        
-      @rating = Rating.find_by_user_id(params[:id])
-      erb :'rating/edit'
+      if logged_in?
+        @rating = Rating.find_by_user_id(params[:id])
+        erb :'rating/edit'
+      else 
+         redirect to '/login'
+      end 
     end
   
     #create 1 rating
@@ -31,18 +40,26 @@ class RatingController < ApplicationController
   
     #update 1 rating
     patch '/rating/:id' do
-      
+
+      if logged_in?
         rating = Rating.find(params[:id])
         rating.update(params[:rating])
-        redirect to "/rating/#{rating.id}"
+        redirect to "/rating/#{rating.id}" 
+      else 
+         redirect to '/login'
+      end 
     end
   
     #delete 1 rating
     delete '/rating/:id' do
       
-      rating = Rating.find(params[:id])
-      rating.destroy
-      redirect "/user/#{rating.user_id}"
+      if logged_in?
+        rating = Rating.find(params[:id])
+        rating.destroy
+        redirect "/user/#{rating.user_id}"
+      else 
+         redirect to '/login'
+      end 
     end
 
     get '/logout' do

@@ -1,7 +1,7 @@
 <a href="/user/<%= current_user.id %>"><input type="submit" value="Profile"></a> <a href="/eatery"><input type="submit" value="Eateries"></a><a href="/logout"><input type="submit" value="Logout"/></a>
 <br/>
 <br/>
-<h1>Rating Review</h1><br>
+<h1><%= current_user.first_name %>'s Rating Review</h1><br>
 <br>
 <h2>Eatery Name:          <%= current_rating.eatery_name %></h2>
 <h2>Customer Service:     <%= current_rating.customer_service %></h2>

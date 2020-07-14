@@ -10,8 +10,10 @@ class UserController < ApplicationController
   
     #shows 1 user
     get '/user/:id' do
-      
+     
       @user = User.find_by_id(params[:id])
+      @ratings = Rating.all 
+      @eats = Eatery.all 
       erb :'user/show'
     end
   
@@ -19,6 +21,7 @@ class UserController < ApplicationController
     get '/user/:id/edit' do
       
       @user = User.find_by_id(params[:id])
+
       erb :'user/edit'
     end
   

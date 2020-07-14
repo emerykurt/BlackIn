@@ -7,7 +7,6 @@ class RatingController < ApplicationController
   
     #shows 1 rating
     get '/rating/:id' do
-     
       @rating = Rating.find_by_id(params[:id])
       erb :'rating/show'
     end
@@ -21,11 +20,13 @@ class RatingController < ApplicationController
   
     #create 1 rating
     post '/rating' do
-      
-      rating = Rating.create(params[:rating])
-      rating.save
-      redirect to '/rating/:id'
-      
+      if logged_in?
+        rating = Rating.create(params[:rating])
+        rating.save
+        redirect to "/rating/#{rating.id}"  
+      else 
+         redirect to '/login'
+      end 
     end
   
     #update 1 rating
@@ -41,7 +42,7 @@ class RatingController < ApplicationController
       
       rating = Rating.find(params[:id])
       rating.destroy
-      redirect "/eatery"
+      redirect "/user/#{rating.user_id}"
     end
 
     get '/logout' do

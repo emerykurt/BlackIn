@@ -7,6 +7,15 @@
 <h2>Email: <%= current_user.email%></h2>
 <br>
 <br>
+<h1>Restaurants Reviewed:</h1>
+<% @ratings.each do |rating| %>
+    <%if rating.user_id == current_user.id%>
+    <h3><a href="/rating/<%= rating.eatery_id %>"><%= rating.eatery_name %> </a> </h3>
+    <%else%>
+    <%end%>
+<% end %>
+<br/>
+<br/>
 <a href="/user/<%= current_user.id %>/edit"> <input type="submit" value="Edit Profile"/></a><br>
 <a href="/logout"> <input type="submit" value="Logout"/> </a>
 <form action= "/user/<%= current_user.id %>" method="POST">

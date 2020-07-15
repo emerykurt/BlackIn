@@ -22,9 +22,6 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by_id(session[:user_id])
     end
 
-    def current_rating
-      @current_rating ||= Rating.find_by_user_id(session[:user_id])
-    end
   end
 
 end

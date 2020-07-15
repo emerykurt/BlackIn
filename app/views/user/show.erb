@@ -7,11 +7,8 @@
 <br>
 <br>
 <h1>Restaurants Reviewed:</h1>
-<% @ratings.each do |rating| %>
-    <%if rating.user_id == current_user.id%>
-    <h3><a href="/rating/<%= rating.eatery_id %>"><%= rating.eatery_name %> </a> </h3>
-    <%else%>
-    <%end%>
+<% current_user.ratings.each do |rating| %>
+    <h3><a href="/rating/<%= rating.id %>"><%= rating.eatery.name %> </a> </h3>
 <% end %>
 <br/>
 <br/>

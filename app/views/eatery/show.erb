@@ -18,8 +18,6 @@
       <br>
       <form method="POST" action="/rating">
       <input type="hidden" name="rating[eatery_id]" id="rating[eatery_id]" value="<%= @eatery.id %>"/>
-      <input type="hidden" name="rating[eatery_name]" id="rating[eatery_name]" value="<%= @eatery.name %>"/>
-      <input type="hidden" name="rating[user_id]" id="rating[user_id]" value="<%= session[:user_id] %>"/>
       <label>Customer Service:</label>
       <input type="radio" name="rating[customer_service]" value="0"> bad
       <input type="radio" name="rating[customer_service]" value="5"> okay

@@ -1,14 +1,15 @@
 <br/>
 <br/>
-<h1><%= current_user.first_name %>'s Rating Review</h1><br>
+<h1><%= @rating.user.first_name %>'s Rating Review</h1><br>
 <br>
-<h2>Eatery Name:          <%= current_rating.eatery_name %></h2>
-<h2>Customer Service:     <%= current_rating.customer_service %></h2>
-<h2>Product Quality:      <%= current_rating.product_quality %></h2>
-<h2>Checkout Experience:  <%= current_rating.checkout_experience %></h2>
-<h2>Overall Experience:   <%= current_rating.overall_experience %></h2><br>
-<a href="/rating/<%= current_rating.id %>/edit"> <input type="submit" value="Edit Rating"/></a><br/>
-<form action= "/rating/<%= current_rating.id %>" method="POST">
+
+<h2>Eatery Name:          <%= @rating.eatery.name %></h2>
+<h2>Customer Service:     <%= @rating.customer_service %></h2>
+<h2>Product Quality:      <%= @rating.product_quality %></h2>
+<h2>Checkout Experience:  <%= @rating.checkout_experience %></h2>
+<h2>Overall Experience:   <%= @rating.overall_experience %></h2><br>
+<a href="/rating/<%= @rating.id %>/edit"> <input type="submit" value="Edit Rating"/></a><br/>
+<form action= "/rating/<%= @rating.id %>" method="POST">
     <input type="hidden" value="DELETE" name="_method" >
     <input type="submit" value="Delete Rating"/>
 </form>

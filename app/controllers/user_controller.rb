@@ -10,6 +10,7 @@ class UserController < ApplicationController
   
     #shows 1 user
     get '/user/:id' do
+      
      if current_user
       @user = User.find_by_id(params[:id])
       @ratings = Rating.all 
@@ -34,25 +35,32 @@ class UserController < ApplicationController
       user = User.create(params[:user])
       if user.save
         session[:user_id] = user.id
-        redirect to '/user/:id'
+        redirect to "/user/#{user.id}"
       else
         @error = user.errors.full_messages.join(" - ")
         erb :'user/new'
       end
     end
   
-    #update 1 user
+    #update 1 user ###put protection
     patch '/user/:id' do
       user = User.find(params[:id])
-      user.update(params[:user])
-      redirect to "/user/#{user.id}"
+      if user.id == session[:user_id]
+        user.update(params[:user])
+        redirect to "/user/#{user.id}"
+      else
+        erb :'welcome'
+      end
     end
 
+    ####put protection
     delete '/user/:id' do
       
       user = User.find(session[:user_id])
-      user.destroy
-      redirect "/"
+      if user.id == session[:user_id]
+        user.destroy
+        redirect "/"
+      end
     end
 
     #should be in a sessions controller
@@ -69,7 +77,7 @@ class UserController < ApplicationController
       user = User.find_by_email(params[:user][:email])
       if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        redirect to '/user/:id'
+        redirect to "/user/#{user.id}"
       else
         redirect '/login'
       end

@@ -1,11 +1,6 @@
 
 class RatingController < ApplicationController
-
-    # 7 RESTFUL routes for rating:
   
-    #shows all the ratings for user who is logged in.
-  
-    #shows 1 rating
     get '/rating/:id' do
         
         @rating = Rating.find_by_id(params[:id])
@@ -13,7 +8,6 @@ class RatingController < ApplicationController
       
     end
   
-    #edit a rating
     get '/rating/:id/edit' do
        
         @rating = Rating.find_by_id(params[:id])
@@ -25,7 +19,6 @@ class RatingController < ApplicationController
       
     end
   
-    #create 1 rating
     post '/rating' do
       if logged_in?
         rating = Rating.create(params[:rating])
@@ -38,7 +31,6 @@ class RatingController < ApplicationController
      
     end
   
-    #update 1 rating
     patch '/rating/:id' do
       
       rating = Rating.find_by_id(params[:id])
@@ -51,7 +43,6 @@ class RatingController < ApplicationController
       
     end
   
-    #delete 1 rating
     delete '/rating/:id' do
       
       if logged_in?

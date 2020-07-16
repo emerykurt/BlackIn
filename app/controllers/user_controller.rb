@@ -1,14 +1,10 @@
 
 class UserController < ApplicationController
 
-    # 7 RESTFUL routes for user:
-
-    #new user form
     get '/user/new' do
       erb :'user/new'
     end
   
-    #shows 1 user
     get '/user/:id' do
       
      if current_user
@@ -21,7 +17,6 @@ class UserController < ApplicationController
      end
     end
   
-    #edit a user
     get '/user/:id/edit' do
       
       @user = User.find_by_id(params[:id])
@@ -29,7 +24,6 @@ class UserController < ApplicationController
       erb :'user/edit'
     end
   
-    #create 1 user
     post '/user' do
       
       user = User.create(params[:user])
@@ -42,7 +36,6 @@ class UserController < ApplicationController
       end
     end
   
-    #update 1 user ###put protection
     patch '/user/:id' do
       user = User.find(params[:id])
       if user.id == session[:user_id]
@@ -53,7 +46,6 @@ class UserController < ApplicationController
       end
     end
 
-    ####put protection
     delete '/user/:id' do
       
       user = User.find(session[:user_id])
@@ -63,7 +55,6 @@ class UserController < ApplicationController
       end
     end
 
-    #should be in a sessions controller
     get '/logout' do
       session.clear
       redirect to '/login'
